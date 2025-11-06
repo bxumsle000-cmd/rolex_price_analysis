@@ -40,13 +40,20 @@ your-project/
 
 ## 🚀 使用方法
 
-### 1. 執行程式
+### 1. 建立環境
+- 安裝 Miniconda
+- 依據 `environment.yml` 建立環境：
+``` bash
+conda env create -f environment.yml
+```
+
+### 2. 執行程式
 
 ```bash
 python _05_price_analysis.py
 ```
 
-### 2. 輸入查詢資訊
+### 3. 輸入查詢資訊
 
 程式會詢問你三個問題:
 
@@ -61,7 +68,7 @@ python _05_price_analysis.py
 - **賣家報價**: 賣家開出的價格(美金)
 - **手錶年分**: 手錶製造年份(例如: 2018)
 
-### 3. 查看分析結果
+### 4. 查看分析結果
 
 程式會依序執行以下 10 個分析步驟:
 

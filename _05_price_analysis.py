@@ -44,7 +44,7 @@ print("\nStep 3: 分析同款手錶市場資料")
 same_ref = df[df['reference number'] == target_ref].copy()
 
 if len(same_ref) == 0:
-    print(f"❌ 找不到 Reference Number: {target_ref} 的資料")
+    print(f" 找不到 Reference Number: {target_ref} 的資料")
     print("建議檢查輸入是否正確，或使用相近的型號")
     
     # 顯示可能的相似 ref
@@ -53,7 +53,7 @@ if len(same_ref) == 0:
     for ref, count in possible_refs.items():
         print(f"  {ref}: {count} 筆資料")
 else:
-    print(f"✅ 找到 {len(same_ref)} 筆相同 Reference Number 的資料")
+    print(f" 找到 {len(same_ref)} 筆相同 Reference Number 的資料")
     
     # =====================================
     # Step 4: 基礎統計分析
@@ -195,14 +195,14 @@ else:
     print(f"發現 {len(outliers)} 筆異常價格")
     
     if seller_price < lower_bound:
-        print(f"⚠️ 賣家價格低於正常範圍，可能是:")
+        print(f" 賣家價格低於正常範圍，可能是:")
         print("   1. 絕佳的交易機會")
         print("   2. 手錶可能有問題")
         print("   3. 需要特別注意真偽")
     elif seller_price > upper_bound:
-        print(f"⚠️ 賣家價格高於正常範圍，建議謹慎考慮")
+        print(f" 賣家價格高於正常範圍，建議謹慎考慮")
     else:
-        print(f"✅ 賣家價格在正常範圍內")
+        print(f" 賣家價格在正常範圍內")
 
     # =====================================
     # Step 9: 保值率檢測
@@ -223,10 +223,10 @@ else:
         annual_rate = (slope / intercept) * 100
     
         if p_value < 0.05:
-            significance = "✅ 統計顯著"
+            significance = " 統計顯著"
             r2= True
         else:
-            significance = "⚠️ 趨勢不顯著（可能只是隨機波動）"
+            significance = " 趨勢不顯著（可能只是隨機波動）"
             r2= False
 
         print(f"\n基於 {len(valid_data)} 筆有年份資料的交易")
@@ -238,27 +238,27 @@ else:
         if r2:
             print(f"\n模型準確度 (R²): {r_squared:.3f}")
             if r_squared > 0.60:
-                print("✅ 模型品質: 優秀")
+                print(" 模型品質: 優秀")
                 print(f"   年份能解釋 {r_squared*100:.1f}% 的價格變異")
             elif r_squared > 0.40:
-                print("✅ 模型品質: 良好")
+                print(" 模型品質: 良好")
                 print(f"   年份能解釋 {r_squared*100:.1f}% 的價格變異")
             elif r_squared > 0.25:
-                print("⚠️ 模型品質: 一般")
+                print(" 模型品質: 一般")
                 print(f"   年份僅能解釋 {r_squared*100:.1f}% 的價格變異")
                 print("   其他因素（條件、配件等）可能更重要")
             else:
-                print("⚠️ 模型品質: 較弱")
+                print(" 模型品質: 較弱")
                 print(f"   年份只能解釋 {r_squared*100:.1f}% 的價格變異")
-                print("   💡 此款錶的價格主要取決於其他因素")        
+                print("    此款錶的價格主要取決於其他因素")        
                 
         if intercept > 0:
                 # 每年變化
                 if annual_change >= 0:
-                    print(f"📈 每年升值: ${abs(annual_change):,.0f}")
+                    print(f" 每年升值: ${abs(annual_change):,.0f}")
                     print(f"年變化率: +{annual_rate:.2f}%")
                 else:
-                    print(f"📉 每年貶值: ${abs(annual_change):,.0f}")
+                    print(f" 每年貶值: ${abs(annual_change):,.0f}")
                     print(f"年變化率: {annual_rate:.2f}%")
             
             
@@ -274,14 +274,14 @@ else:
                 # 在5年預測之後加上外推預測
                 max_age = valid_data['age'].max()
                 if max_age < watch_age + 5 :
-                    print(f"⚠️ 注意：目前資料只到錶齡 {max_age} 年，往後的預測屬於外插結果，可信度較低。")    
+                    print(f" 注意：目前資料只到錶齡 {max_age} 年，往後的預測屬於外插結果，可信度較低。")    
         else:
-            print(f"⚠️ 警告: 模型在新錶價格的預測為 ${intercept:,.0f} (不合理)")
+            print(f" 警告: 模型在新錶價格的預測為 ${intercept:,.0f} (不合理)")
             print(f"   這可能表示:")
             print(f"   1. 資料中缺乏新錶或年輕錶的樣本")
             print(f"   2. 線性模型不適合此錶款")
     else:
-        print("\n⚠️ 資料數小於10筆，不適合進行保值率分析")
+        print("\n資料數小於10筆，不適合進行保值率分析")
 
 
     # ====================================================    

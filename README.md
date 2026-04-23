@@ -41,10 +41,16 @@ your-project/
 ##  使用方法
 
 ### 1. 建立環境
-- 安裝 Miniconda
-- 依據 `environment.yml` 建立環境：
-``` bash
+
+**方式一：使用 pip（推薦，適用於任何 Python 環境）**
+```bash
+pip install -r requirements.txt
+```
+
+**方式二：使用 Conda（需先安裝 Miniconda 或 Anaconda）**
+```bash
 conda env create -f environment.yml
+conda activate rolex-env
 ```
 
 ### 2. 執行程式
